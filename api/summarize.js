@@ -9,9 +9,15 @@ export default async function handler(req, res) {
     }
 
     const { text, format } = req.body;
-    if (!text) {
+    if (!text || typeof text !== 'string') {
         return res.status(400).json({ error: 'Text is required' });
     }
+    if (text.length > 30000) {
+        return res.status(400).json({ error: 'Text too long (max 30,000 characters)' });
+    }
+
+    const validFormats = ['bullet', 'oneline', 'report'];
+    const selectedFormat = validFormats.includes(format) ? format : 'bullet';
 
     const formatInstructions = {
         bullet: '箇条書き（「・」で始める）で要約してください。重要なポイントを3〜5個に絞ってください。',
@@ -22,7 +28,7 @@ export default async function handler(req, res) {
     const prompt = `以下のテキストを要約してください。
 
 【出力形式】
-${formatInstructions[format] || formatInstructions.bullet}
+${formatInstructions[selectedFormat]}
 
 【ルール】
 - 元のテキストの情報を正確に反映する
@@ -35,10 +41,13 @@ ${text}`;
 
     try {
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+            'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
             {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-goog-api-key': apiKey
+                },
                 body: JSON.stringify({
                     contents: [{
                         role: 'user',
