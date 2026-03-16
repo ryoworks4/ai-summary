@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI日報サマリー | 日報をワンクリックで要約</title>
+    <meta name="description" content="日報や議事録をAIがワンクリックで要約。コピペして押すだけ。">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <h1>AI日報サマリー</h1>
+        <p class="header-desc">日報・議事録をワンクリックで要約</p>
+    </div>
+</header>
+
+<main class="main">
+    <div class="container">
+
+        <div class="tool-layout">
+            <!-- 入力エリア -->
+            <div class="input-section">
+                <div class="section-header">
+                    <label for="inputText">元のテキスト</label>
+                    <span class="char-count" id="charCount">0文字</span>
+                </div>
+                <textarea id="inputText" placeholder="ここに日報や議事録を貼り付けてください。
+
+例:
+本日は午前中にA社との定例会議に参加しました。新規プロジェクトのスケジュールについて話し合い、来月中旬までに初回提案を行うことで合意しました。午後はB社向けの提案資料を作成し、部長に確認を依頼しました。夕方のチームミーティングでは今週の進捗を共有し、来週の優先タスクを確認しました。"></textarea>
+
+                <div class="options">
+                    <div class="option-group">
+                        <label for="formatSelect">出力形式</label>
+                        <select id="formatSelect">
+                            <option value="bullet">箇条書き</option>
+                            <option value="oneline">一行要約</option>
+                            <option value="report">報告書形式</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="summarizeBtn" class="btn-summarize">要約する</button>
+            </div>
+
+            <!-- 出力エリア -->
+            <div class="output-section">
+                <div class="section-header">
+                    <label>要約結果</label>
+                    <button id="copyBtn" class="btn-copy" style="display:none;">コピー</button>
+                </div>
+                <div class="output-area" id="outputArea">
+                    <p class="placeholder-text">左のテキストを入力して「要約する」を押してください。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 使い方 -->
+        <section class="how-to">
+            <h2>使い方</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>日報や議事録のテキストを貼り付ける</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>出力形式を選ぶ（箇条書き・一行・報告書）</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>「要約する」を押すだけ</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <p>※ これはポートフォリオ用のデモです。入力内容はサーバーに保存されません。</p>
+    <p>Powered by Gemini API</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+    color: #333;
+    background: #f0f2f4;
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* --- ヘッダー --- */
+.header {
+    background: #2a3a42;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header h1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.header-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2px;
+}
+
+/* --- メイン --- */
+.main {
+    flex: 1;
+    padding: 28px 0;
+}
+
+.tool-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* --- セクション共通 --- */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.section-header label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+}
+
+.char-count {
+    font-size: 12px;
+    color: #888;
+}
+
+/* --- 入力エリア --- */
+.input-section {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    height: 320px;
+    padding: 14px;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.7;
+    border: 1px solid #ccd5d9;
+    background: #fff;
+    resize: vertical;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #2d6e8e;
+}
+
+textarea::placeholder {
+    color: #aab5bb;
+}
+
+.options {
+    margin-top: 12px;
+    display: flex;
+    gap: 16px;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.option-group label {
+    font-size: 13px;
+    color: #555;
+}
+
+select {
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid #ccd5d9;
+    background: #fff;
+    font-family: inherit;
+    outline: none;
+}
+
+select:focus {
+    border-color: #2d6e8e;
+}
+
+.btn-summarize {
+    margin-top: 14px;
+    padding: 12px 0;
+    width: 100%;
+    background: #2d6e8e;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+.btn-summarize:hover {
+    background: #1b4d63;
+}
+
+.btn-summarize:disabled {
+    background: #a0b8c4;
+    cursor: not-allowed;
+}
+
+/* --- 出力エリア --- */
+.output-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.output-area {
+    flex: 1;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #ccd5d9;
+    min-height: 320px;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.placeholder-text {
+    color: #aab5bb;
+    font-size: 13px;
+}
+
+.btn-copy {
+    padding: 4px 12px;
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid #ccd5d9;
+    cursor: pointer;
+    color: #2d6e8e;
+    font-weight: 600;
+    font-family: inherit;
+}
+
+.btn-copy:hover {
+    background: #eef5f8;
+}
+
+/* --- ローディング --- */
+.loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    font-size: 13px;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.loading-dots span {
+    width: 5px;
+    height: 5px;
+    background: #999;
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%, 60%, 100% { opacity: 0.3; }
+    30% { opacity: 1; }
+}
+
+/* --- 使い方 --- */
+.how-to {
+    margin-top: 36px;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #dde5e8;
+}
+
+.how-to h2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+.steps {
+    display: flex;
+    gap: 24px;
+}
+
+.step {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.step-num {
+    width: 28px;
+    height: 28px;
+    background: #2d6e8e;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.step p {
+    font-size: 13px;
+    color: #555;
+    padding-top: 4px;
+}
+
+/* --- フッター --- */
+.footer {
+    text-align: center;
+    padding: 14px 20px;
+    background: #fff;
+    border-top: 1px solid #dde5e8;
+}
+
+.footer p {
+    font-size: 11px;
+    color: #999;
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 700px) {
+    .tool-layout {
+        grid-template-columns: 1fr;
+    }
+
+    textarea {
+        height: 200px;
+    }
+
+    .output-area {
+        min-height: 200px;
+    }
+
+    .steps {
+        flex-direction: column;
+        gap: 14px;
+    }
+}
